@@ -22,8 +22,8 @@ A Flask web application that extracts related keywords from Baidu search results
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/monyratha/baidu-keyword-tool-flask.git
+cd baidu-keyword-tool-flask
 ```
 
 2. Create and activate a virtual environment:
