@@ -1,5 +1,7 @@
 # Baidu Keyword Extractor 🤖
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
 A Flask web application that extracts related keywords from Baidu search results. This tool helps you discover related terms and suggestions for your keywords by scraping Baidu's mobile search interface.
 
 ## Features
