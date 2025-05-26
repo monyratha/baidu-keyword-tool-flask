@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    font-family: "Fira Code", monospace;
+    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 500;
+    background: linear-gradient(90deg, #00ffe0, #00b3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 5px #00f7ff66;
+    margin-bottom: 2rem;
+}
+
+label {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    display: block;
+    color: #ccc;
+}
+
+textarea, input[type="text"], select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.08);
+    transition: 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+    border-color: #00f7ff;
+    box-shadow: 0 0 10px #00f7ff99;
+}
+
+button {
+    background: linear-gradient(135deg, #00f7ff, #00e0c6);
+    color: #000;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+button:hover {
+    box-shadow: 0 0 20px #00ffe0aa;
+    transform: scale(1.02);
+}
+
+.toast {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    color: #00ffe0;
+    font-weight: 500;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+}
+
+#advanced {
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: none;
+    backdrop-filter: blur(10px);
+}
+
+.saved-badge {
+    color: #00ffcc;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+.spinner {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #00f7ff;
+}
+
+.result-container {
+    position: relative;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 4px solid #00f7ff;
+    border-radius: 16px;
+    animation: fadeInUp 0.6s ease;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 247, 255, 0.2);
+}
+
+.result-block {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.4s forwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-block strong {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    color: #00f7ff;
+}
+
+ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.5rem;
+}
+
+ul li {
+    line-height: 1.5rem;
+    font-family: "JetBrains Mono", monospace;
+    color: #b0fefb;
+}
+
+.copy-btn.float-copy {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: #00f7ff;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.copy-btn.float-copy:hover {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+.term {
+    margin-left: 1rem;
+    font-family: "JetBrains Mono", monospace;
+    color: #b0fefb;
+}
