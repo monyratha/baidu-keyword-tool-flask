@@ -103,6 +103,11 @@
             }
         });
         document.getElementById('spinner').style.display = 'block';
+        const resultText = document.getElementById('result-text');
+        if (resultText) {
+            resultText.innerHTML = '';
+            resultText.style.display = 'none';
+        }
     }
 
     function copyResults() {
