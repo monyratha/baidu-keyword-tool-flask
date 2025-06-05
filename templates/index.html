@@ -13,7 +13,7 @@
         <a href="?lang=en" class="lang-option{% if lang == 'en' %} active{% endif %}">🇺🇸 EN</a>
         <a href="?lang=zh" class="lang-option{% if lang == 'zh' %} active{% endif %}">🇨🇳 中文</a>
     </div>
-    <h1>{{ t['title'] }}</h1>
+    <h1>{{ t['title'].replace('🤖', '<span class="emoji">🤖</span>')|safe }}</h1>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}

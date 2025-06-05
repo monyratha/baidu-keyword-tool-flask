@@ -65,6 +65,11 @@ h1 {
     text-shadow: 0 0 5px #00f7ff66;
     margin-bottom: 2rem;
 }
+h1 .emoji {
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: initial;
+}
 
 label {
     font-size: 0.9rem;
