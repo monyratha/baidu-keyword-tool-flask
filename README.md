@@ -39,6 +39,11 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+4. Run the test suite (optional):
+```bash
+pytest -q
+```
+
 ## Usage
 
 1. Start the Flask application:
@@ -66,7 +71,7 @@ python app.py
 ├── app.py              # Main Flask application
 ├── requirements.txt    # Python dependencies
 ├── static/
-│   └── style.css      # CSS styles (embedded in index.html)
+│   └── style.css      # CSS styles
 └── templates/
     └── index.html     # Main HTML template
 ```
@@ -77,6 +82,15 @@ This application requires Baidu login credentials (cookies) to function properly
 - Stored securely in your browser's local storage
 - Only sent to Baidu's servers
 - Never stored on the application server
+
+## Docker
+
+Build and run the app using Docker:
+
+```bash
+docker build -t baidu-tool .
+docker run -p 5000:5000 baidu-tool
+```
 
 ## License
 
