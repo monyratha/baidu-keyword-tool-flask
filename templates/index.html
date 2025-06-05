@@ -9,12 +9,10 @@
 </head>
 <body>
 <div class="container">
-    <form id="lang-form" method="get">
-        <select name="lang" onchange="document.getElementById('lang-form').submit()">
-            <option value="en" {% if lang == 'en' %}selected{% endif %}>English</option>
-            <option value="zh" {% if lang == 'zh' %}selected{% endif %}>中文</option>
-        </select>
-    </form>
+    <div class="lang-switch">
+        <a href="?lang=en" class="lang-option{% if lang == 'en' %} active{% endif %}">🇺🇸 EN</a>
+        <a href="?lang=zh" class="lang-option{% if lang == 'zh' %} active{% endif %}">🇨🇳 中文</a>
+    </div>
     <h1>{{ t['title'] }}</h1>
 
     {% with messages = get_flashed_messages() %}
