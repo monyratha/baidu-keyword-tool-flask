@@ -191,24 +191,28 @@ ul li {
     color: #b0fefb;
 }
 
-.copy-btn.float-copy {
-    position: absolute;
-    right: 20px;
-    top: 10px;
+.copy-btn {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(0, 255, 255, 0.3);
     color: #00f7ff;
     padding: 6px 12px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     border-radius: 8px;
-    z-index: 10;
     transition: all 0.2s ease;
 }
 
-.copy-btn.float-copy:hover {
+.copy-btn:hover {
     background: rgba(0, 255, 255, 0.1);
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
 }
+
+.copy-btn.float-copy {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 10;
+}
+
 
 .term {
     margin-left: 1rem;

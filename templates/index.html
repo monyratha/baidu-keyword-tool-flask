@@ -44,7 +44,7 @@
 
     {% if results %}
     <div class="result-container" id="result-text">
-        <button class="copy-btn" onclick="copyResults()">📋 Copy</button>
+        <button class="copy-btn float-copy" onclick="copyResults()" aria-label="Copy results">📋 Copy</button>
         <h3>Results:</h3>
         {% for kw, terms in results %}
         <div class="result-block">
