@@ -239,3 +239,10 @@ ul li {
     display: block;
     animation: fadeInUp 0.4s ease;
 }
+
+.page-footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #999;
+}

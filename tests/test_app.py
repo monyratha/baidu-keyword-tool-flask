@@ -15,6 +15,7 @@ def test_index_get():
     resp = client.get('/')
     assert resp.status_code == 200
     assert b'Baidu Keyword Extractor' in resp.data
+    assert b'page-footer' in resp.data
 
 
 @patch('requests.get')
