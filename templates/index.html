@@ -36,7 +36,10 @@
         </div>
 
         <button type="submit">🧠 Extract</button>
-        <div class="spinner" id="spinner">⏳ Scraping Baidu…</div>
+        <div class="spinner" id="spinner">
+            <span class="loader"></span>
+            <span class="spinner-text">Scraping Baidu…</span>
+        </div>
     </form>
 
     {% if results %}
