@@ -13,6 +13,12 @@ A Flask web application that extracts related keywords from Baidu search results
 - Secure credential storage in browser's local storage
 - Mobile-responsive design
 
+## Screenshot
+
+The UI is simple and mobile friendly:
+
+![Screenshot of the app](screenshot.png)
+
 ## Requirements
 
 - Python 3.x
