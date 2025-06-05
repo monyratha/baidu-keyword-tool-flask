@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8"/>
-    <title>Baidu Keyword Extractor 🤖</title>
+    <title>{{ t['title'] }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Use url_for so Flask serves the stylesheet correctly -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 <div class="container">
-    <h1>🤖 Baidu Keyword Extractor</h1>
+    <form id="lang-form" method="get">
+        <select name="lang" onchange="document.getElementById('lang-form').submit()">
+            <option value="en" {% if lang == 'en' %}selected{% endif %}>English</option>
+            <option value="zh" {% if lang == 'zh' %}selected{% endif %}>中文</option>
+        </select>
+    </form>
+    <h1>{{ t['title'] }}</h1>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -19,11 +25,11 @@
     {% endif %}
     {% endwith %}
 
-    <form method="POST" onsubmit="saveCredentials()">
-        <label>Keywords (one per line):</label>
+    <form method="POST" action="?lang={{ lang }}" onsubmit="saveCredentials()">
+        <label>{{ t['keywords_label'] }}</label>
         <textarea name="keywords" rows="6">{{ request.form.get('keywords', '') }}</textarea>
 
-        <button type="button" id="toggle-advanced">🔐 Configure Baidu Login</button>
+        <button type="button" id="toggle-advanced">{{ t['configure_login'] }}</button>
         <div id="advanced">
             <label>BAIDUID:<span id="baiduid-saved" class="saved-badge"></span></label>
             <input type="text" id="baiduid" name="baiduid" required>
@@ -35,17 +41,17 @@
             <input type="text" id="bdorz" name="bdorz" required>
         </div>
 
-        <button type="submit">🧠 Extract</button>
+        <button type="submit">{{ t['extract'] }}</button>
         <div class="spinner" id="spinner">
             <span class="loader"></span>
-            <span class="spinner-text">Scraping Baidu…</span>
+            <span class="spinner-text">{{ t['scraping'] }}</span>
         </div>
     </form>
 
     {% if results %}
     <div class="result-container" id="result-text">
-        <button class="copy-btn float-copy" onclick="copyResults()" aria-label="Copy results">📋 Copy</button>
-        <h3>Results:</h3>
+        <button class="copy-btn float-copy" onclick="copyResults()" aria-label="{{ t['copy_btn'] }}">📋 {{ t['copy_btn'] }}</button>
+        <h3>{{ t['results'] }}</h3>
         {% for kw, terms in results %}
         <div class="result-block">
             <strong>{{ kw }}</strong>
@@ -64,7 +70,7 @@
     <p>&copy; 2024 Lucas</p>
 </footer>
 
-<div id="toast" class="copy-toast">✅ Results copied to clipboard!</div>
+<div id="toast" class="copy-toast">{{ t['copied'] }}</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -127,7 +133,7 @@
         });
 
         navigator.clipboard.writeText(text.trim()).then(() => {
-            showToast("✅ Results copied to clipboard!");
+            showToast({{ t['copied'] | tojson }});
         });
     }
 

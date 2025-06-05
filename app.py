@@ -12,6 +12,30 @@ logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 app.secret_key = 'lucas-rules'
 
+LANGUAGES = {
+    'en': {
+        'title': 'Baidu Keyword Extractor 🤖',
+        'keywords_label': 'Keywords (one per line):',
+        'configure_login': '🔐 Configure Baidu Login',
+        'extract': '🧠 Extract',
+        'scraping': 'Scraping Baidu…',
+        'results': 'Results:',
+        'copy_btn': 'Copy',
+        'copied': '✅ Results copied to clipboard!',
+        'fill_in': 'Please fill in all fields.'
+    },
+    'zh': {
+        'title': '百度关键词提取工具 🤖',
+        'keywords_label': '关键词（每行一个）：',
+        'configure_login': '🔐 配置百度登录',
+        'extract': '🧠 提取',
+        'scraping': '正在抓取百度…',
+        'results': '结果：',
+        'copy_btn': '复制',
+        'copied': '✅ 已复制到剪贴板！',
+        'fill_in': '请填写所有字段。'
+    }
+}
 
 def fetch_related_terms(keyword, headers, cookies):
     url = f"https://m.baidu.com/s?wd={keyword}"
@@ -36,6 +60,11 @@ def fetch_related_terms(keyword, headers, cookies):
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    lang = request.args.get("lang", "en")
+    if lang not in LANGUAGES:
+        lang = "en"
+    t = LANGUAGES[lang]
+
     results = []
     if request.method == "POST":
         keywords = request.form.get("keywords", "").strip()
@@ -44,7 +73,7 @@ def index():
         bdorz = request.form.get("bdorz", "").strip()
 
         if not (keywords and baiduid and bduss and bdorz):
-            flash("Please fill in all fields.")
+            flash(t['fill_in'])
         else:
             cookies = {
                 "BAIDUID": baiduid,
@@ -67,7 +96,7 @@ def index():
                     terms = fetch_related_terms(kw_clean, headers, cookies)
                     results.append((kw_clean, sorted(terms)))
 
-    return render_template("index.html", results=results)
+    return render_template("index.html", results=results, lang=lang, t=t)
 
 
 if __name__ == "__main__":
