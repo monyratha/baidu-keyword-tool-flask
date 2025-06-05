@@ -191,3 +191,23 @@ ul li {
     font-family: "JetBrains Mono", monospace;
     color: #b0fefb;
 }
+
+/* Toast notification shown after copying results */
+.copy-toast {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.copy-toast.show {
+    display: block;
+    animation: fadeInUp 0.4s ease;
+}
