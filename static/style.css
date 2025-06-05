@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&display=swap');
+
 body {
     margin: 0;
     font-family: "Fira Code", monospace;
@@ -105,9 +107,33 @@ button:hover {
 }
 
 .spinner {
+    display: none;
     margin-top: 1rem;
     font-size: 1rem;
     color: #00f7ff;
+    text-align: center;
+}
+
+.spinner .loader {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #00f7ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.spinner-text {
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .result-container {
@@ -165,27 +191,51 @@ ul li {
     color: #b0fefb;
 }
 
-.copy-btn.float-copy {
-    position: absolute;
-    right: 20px;
-    top: 10px;
+.copy-btn {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(0, 255, 255, 0.3);
     color: #00f7ff;
     padding: 6px 12px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     border-radius: 8px;
-    z-index: 10;
     transition: all 0.2s ease;
 }
 
-.copy-btn.float-copy:hover {
+.copy-btn:hover {
     background: rgba(0, 255, 255, 0.1);
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
 }
+
+.copy-btn.float-copy {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 10;
+}
+
 
 .term {
     margin-left: 1rem;
     font-family: "JetBrains Mono", monospace;
     color: #b0fefb;
+}
+
+/* Toast notification shown after copying results */
+.copy-toast {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.copy-toast.show {
+    display: block;
+    animation: fadeInUp 0.4s ease;
 }

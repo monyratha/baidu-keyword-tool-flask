@@ -5,6 +5,9 @@
 from flask import Flask, render_template, request, flash
 from bs4 import BeautifulSoup
 import requests
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 app.secret_key = 'lucas-rules'
@@ -14,6 +17,7 @@ def fetch_related_terms(keyword, headers, cookies):
     url = f"https://m.baidu.com/s?wd={keyword}"
     try:
         res = requests.get(url, headers=headers, cookies=cookies, timeout=10)
+        res.raise_for_status()
         soup = BeautifulSoup(res.text, "html.parser")
         results = set()
         for row in soup.select(
@@ -22,7 +26,11 @@ def fetch_related_terms(keyword, headers, cookies):
                 for span in col.select("span.content-link_2AXFK.c-fwb"):
                     results.add(span.text.strip())
         return results
+    except requests.RequestException as e:
+        logging.error("Network error fetching %s: %s", keyword, e)
+        return {f"[ERROR] {keyword}"}
     except Exception as e:
+        logging.exception("Parsing error for %s", keyword)
         return {f"[ERROR] {keyword}: {e}"}
 
 
