@@ -37,6 +37,7 @@ LANGUAGES = {
     }
 }
 
+
 def fetch_related_terms(keyword, headers, cookies):
     url = f"https://m.baidu.com/s?wd={keyword}"
     try:
@@ -45,8 +46,8 @@ def fetch_related_terms(keyword, headers, cookies):
         soup = BeautifulSoup(res.text, "html.parser")
         results = set()
         for row in soup.select(
-                "div.cos-row.cos-space-pb-xs.font-size-upgrade_2fasj, div.cos-row.font-size-upgrade_2fasj"):
-            for col in row.select("div.cos-col"):
+                "div.cos-row.cos-gutter.cos-space-pb-xs.font-size-upgrade_2fasj, div.cos-row.font-size-upgrade_2fasj"):
+            for col in row.select("div.cos-col-6"):
                 for span in col.select("span.content-link_2AXFK.c-fwb"):
                     results.add(span.text.strip())
         return results
